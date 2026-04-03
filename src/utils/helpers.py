@@ -1,22 +1,13 @@
-def normalize_name(value):
+
+def normalize_name(value: str | None) -> str:
     if value is None:
         return ""
-    text = str(value)
-    text = text.strip()
+    if not isinstance(value, str):
+        raise TypeError("Input must be a string or None")
+    text = value.strip()
     text = text.lower()
     text = text.replace(" ", "-")
     return text
 
-
-def slow_sum(values):
-    total = 0
-    for value in values:
-        total = total + value
-    return total
-
-
-def slow_sum_again(values):
-    result = 0
-    for item in values:
-        result += item
-    return result
+def sum_values(values):
+    return sum(values)
