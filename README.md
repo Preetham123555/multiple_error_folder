@@ -10,6 +10,7 @@ This repository is intentionally messy, repetitive, and poorly structured for bu
 - `src/utils/helpers.py` - duplicated helper logic
 - `web/index.html` and `web/static/style.css` - messy frontend files
 - `scripts/run.js` - sloppy JS script
+- `node_modules/faux-utils` and `node_modules/unused-lib` - tracked dummy modules
 
 ## Notes
 - The code is intentionally unoptimized.
