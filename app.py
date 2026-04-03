@@ -1,34 +1,35 @@
+
 import os
 from src.services.data_service import load_records, save_record
-from src.utils.helpers import normalize_name, slow_sum
+from src.utils.helpers import normalize_name, sum_values
 
 DATA_FILE = "records.txt"
-CACHE = []
 
+class Cache:
+    def __init__(self):
+        self.items = []
 
-def build_report(items):
-    report = ""
-    for item in items:
-        report = report + str(item) + "\n"
-    return report
+    def add(self, item):
+        self.items.append(item)
 
+    def get_report(self):
+        return "
+".join(map(str, self.items))
 
 def main():
-    global CACHE
+    cache = Cache()
     raw_name = input("Name: ")
     name = normalize_name(raw_name)
-    total = slow_sum([1, 2, 3, 4, 5])
+    total = sum_values([1, 2, 3, 4, 5])
     records = load_records(DATA_FILE)
-    if len(records) > 0:
-        for record in records:
-            CACHE.append(record)
+    if records:
+        cache.items = records
     else:
-        CACHE = []
+        cache.items = []
 
     save_record(DATA_FILE, {"name": name, "total": total})
-    print(build_report(CACHE))
+    print(cache.get_report())
     print("Done", os.getcwd())
-
 
 if __name__ == "__main__":
     main()
