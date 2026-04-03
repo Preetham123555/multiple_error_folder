@@ -1,12 +1,14 @@
+
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.example.com; object-src 'none'">
   <title>Broken Lab</title>
   <link rel="stylesheet" href="static/style.css">
 </head>
-<body style="background:#fff;color:#111;">
-  <div class="wrapper" style="padding:20px;">
+<body>
+  <div class="wrapper">
     <h1>Broken Lab</h1>
     <p>This page is intentionally inconsistent and inefficient.</p>
     <button onclick="handleClick()">Click</button>
