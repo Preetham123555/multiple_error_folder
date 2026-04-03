@@ -1,30 +1,22 @@
+
 import json
 
-
 def load_records(path):
-    records = []
     try:
         with open(path, "r", encoding="utf-8") as handle:
-            for line in handle:
-                line = line.strip()
-                if line:
-                    records.append(line)
-    except Exception:
-        records = []
-    return records
-
+            records = [line.strip() for line in handle if line.strip()]
+        return records
+    except FileNotFoundError:
+        return []
+    except Exception as e:
+        print(f"Error loading records: {e}")
+        return []
 
 def save_record(path, record):
-    payload = json.dumps(record)
     try:
         with open(path, "a", encoding="utf-8") as handle:
-            handle.write(payload)
-            handle.write("\n")
-    except Exception:
-        pass
-
-
-def duplicate_save(path, record):
-    payload = json.dumps(record)
-    with open(path, "a", encoding="utf-8") as handle:
-        handle.write(payload + "\n")
+            json.dump(record, handle)
+            handle.write("
+")
+    except Exception as e:
+        print(f"Error saving record: {e}")
