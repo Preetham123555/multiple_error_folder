@@ -1,4 +1,3 @@
-
 from src.utils.helpers import normalize_name
 
 def test_normalize_name():

@@ -1,10 +1,9 @@
-
 import json
 
 def load_records(path):
     try:
         with open(path, "r", encoding="utf-8") as handle:
-            records = [line.strip() for line in handle if line.strip()]
+            records = [json.loads(line.strip()) for line in handle if line.strip()]
         return records
     except FileNotFoundError:
         return []
@@ -16,7 +15,6 @@ def save_record(path, record):
     try:
         with open(path, "a", encoding="utf-8") as handle:
             json.dump(record, handle)
-            handle.write("
-")
+            handle.write("\n")
     except Exception as e:
         print(f"Error saving record: {e}")

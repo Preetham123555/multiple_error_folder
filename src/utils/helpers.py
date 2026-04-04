@@ -1,4 +1,3 @@
-
 def normalize_name(value: str | None) -> str:
     if value is None:
         return ""
@@ -9,5 +8,5 @@ def normalize_name(value: str | None) -> str:
     text = text.replace(" ", "-")
     return text
 
-def sum_values(values):
+def sum_values(values: list[int]) -> int:
     return sum(values)
